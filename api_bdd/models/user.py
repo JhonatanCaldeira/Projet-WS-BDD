@@ -48,7 +48,7 @@ class User(UserMixin, db.Model):
         if User.query.filter_by(email=data['email']).first():
             raise ValueError("Email already exists")
 
-        password_hash = generate_password_hash(data["password"], method="sha256")
+        password_hash = generate_password_hash(data["password"])
         new_user = User(email=data["email"],
                         name=data["name"],
                         password=password_hash)
